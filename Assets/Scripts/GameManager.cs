@@ -55,7 +55,7 @@ public class GameManager : MonoBehaviour
 
     private void NewRound()
     {
-        gameOverText.enabled = false;
+        // gameOverText.enabled = false;
 
         foreach (Transform pellet in pellets) {
             pellet.gameObject.SetActive(true);
@@ -83,13 +83,13 @@ public class GameManager : MonoBehaviour
     private void SetLives(int lives)
     {
         this.lives = lives;
-        livesText.text = "x" + lives.ToString();
+        // livesText.text = "x" + lives.ToString();
     }
 
     private void SetScore(int score)
     {
         this.score = score;
-        scoreText.text = score.ToString().PadLeft(2, '0');
+        // scoreText.text = score.ToString().PadLeft(2, '0');
     }
 
     public void PacmanEaten()
