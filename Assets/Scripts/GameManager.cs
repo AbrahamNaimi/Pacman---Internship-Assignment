@@ -66,6 +66,10 @@ public class GameManager : MonoBehaviour
 
     private void ResetState()
     {
+        for (int i = 0; i < ghosts.Length; i++) {
+            ghosts[i].ResetState();
+        }
+
         pacman.ResetState();
     }
 
@@ -107,6 +111,9 @@ public class GameManager : MonoBehaviour
 
     public void GhostEaten(Ghost ghost)
     {
+        int points = ghost.points * ghostMultiplier;
+        SetScore(score + points);
+
         ghostMultiplier++;
     }
 
@@ -125,6 +132,10 @@ public class GameManager : MonoBehaviour
 
     public void PowerPelletEaten(PowerPellet pellet)
     {
+        for (int i = 0; i < ghosts.Length; i++) {
+            ghosts[i].frightened.Enable(pellet.duration);
+        }
+
         PelletEaten(pellet);
         CancelInvoke(nameof(ResetGhostMultiplier));
         Invoke(nameof(ResetGhostMultiplier), pellet.duration);
